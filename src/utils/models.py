@@ -501,10 +501,10 @@ class XGBoostModel(BaseModel):
             )
             
         # Add fit_params for early stopping
-        fit_params = {
-            'early_stopping_rounds': early_stopping_rounds,
-            'verbose': False
-        }
+        # fit_params = {
+        #     'early_stopping_rounds': early_stopping_rounds,
+        #     'verbose': False
+        # }
             
         # Choose search method
         if search_method == 'grid':
@@ -529,7 +529,7 @@ class XGBoostModel(BaseModel):
             )
         
         # Fit search
-        search.fit(X, y, **fit_params)
+        search.fit(X, y)
         
         # Update model with best estimator
         self.model = search.best_estimator_

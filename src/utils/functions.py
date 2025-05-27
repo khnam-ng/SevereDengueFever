@@ -140,9 +140,9 @@ def evaluate(model, X, y_true, model_type='classifier'):
     if model_type == 'classifier':
         metrics = {
             'accuracy': accuracy_score(y_true, y_pred),
-            'precision': precision_score(y_true, y_pred, average='weighted', zero_division=0),
-            'recall': recall_score(y_true, y_pred, average='weighted', zero_division=0),
-            'f1_score': f1_score(y_true, y_pred, average='weighted', zero_division=0)
+            'precision': precision_score(y_true, y_pred, zero_division=0), #average='weighted'
+            'recall': recall_score(y_true, y_pred, zero_division=0),
+            'f1_score': f1_score(y_true, y_pred, zero_division=0)
         }
         # Add ROC AUC for binary classification
         if len(np.unique(y_true)) == 2:

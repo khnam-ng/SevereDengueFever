@@ -21,6 +21,47 @@ from sklearn.metrics import (
     classification_report
 )
 
+def distribution_plot(df_x, x_name: str):
+    plt.subplots(figsize=(10, 6))
+    x_3 = df_x.loc[df_x['Diagnosis'] == 3, x_name]
+    x_2 = df_x.loc[df_x['Diagnosis'] == 2, x_name]
+    x_1 = df_x.loc[df_x['Diagnosis'] == 1, x_name]
+    y_3 = np.random.rand(x_3.shape[0])
+    y_2 = np.random.rand(x_2.shape[0])
+    y_1 = np.random.rand(x_1.shape[0])
+
+    # fig, ax = plt.subplots(ncols=2, nrows=1, figsize=(16, 8))
+
+    # ax[0].scatter(x_3, np.random.rand(x_3.shape[0]) * 10, color='red', alpha=0.75)
+    # ax[0].scatter(x_2, np.random.rand(x_2.shape[0]) * 10, color='navy', alpha=0.75)
+    # ax[0].scatter(x_1, np.random.rand(x_1.shape[0]) * 10, color='green', alpha=0.75)
+    # ax[0].set_xlabel(x_name + ' Values')
+    # ax[0].set_xlim(0, np.max(df_x[x_name]) + 1)
+    # ax[0].set_ylim(-0.25, 10.25)
+    # ax[0].set_yticks([])
+
+    plt.scatter(x_3, [4/80] * (y_3 + 1), label = 'Diagnosis 3', color='red', alpha=0.65)
+    plt.scatter(x_2, [2/80] * (y_2 + 1), label = 'Diagnosis 2',color='navy', alpha=0.65)
+    plt.scatter(x_1, [1/80] * (y_1 + 1), label = 'Diagnosis 1',color='green', alpha=0.65)
+    plt.vlines(np.max(x_3), 0, (4/80) * (y_3[np.argmax(x_3)]+1), label = f'{np.max(x_3)}: max value of Diagnosis 3', color='red', alpha=0.65, linestyle="--")
+    plt.vlines(np.min(x_3), 0, (4/80) * (y_3[np.argmin(x_3)]+1), label = f'{np.min(x_3)}: min value of Diagnosis 3', color='red', alpha=0.65, linestyle=":")
+    plt.vlines(np.max(x_2), 0, (2/80) * (y_2[np.argmax(x_2)]+1), label = f'{np.max(x_2)}: max value of Diagnosis 2', color='navy', alpha=0.65, linestyle="--")
+    plt.vlines(np.min(x_2), 0, (2/80) * (y_2[np.argmin(x_2)]+1), label = f'{np.min(x_2)}: min value of Diagnosis 2', color='navy', alpha=0.65, linestyle=":")
+    plt.vlines(np.max(x_1), 0, (1/80) * (y_1[np.argmax(x_1)]+1), label = f'{np.max(x_1)}: max value of Diagnosis 1', color='green', alpha=0.65, linestyle="--")
+    plt.vlines(np.min(x_1), 0, (1/80) * (y_1[np.argmin(x_1)]+1), label = f'{np.min(x_1)}: min value of Diagnosis 1', color='green', alpha=0.65, linestyle=":")
+    sns.kdeplot(x_3, color='red')
+    sns.kdeplot(x_2, color='navy')
+    sns.kdeplot(x_1, color='green')
+    plt.legend()
+    # plt.xlim(-10, np.max(df_x[x_name]) + 100)
+    plt.yticks([])
+    plt.title(x_name + ' Distribution by Diagnosis', fontsize=14)
+    # plt.colorbar(ticks = [1,2,3], values = [1,2,3], label='Diagnosis')
+
+    # fig.colorbar(cmap=['green','navy','red'], ticks = [1,2,3], values = [1,2,3], ax = ax[0], label='Diagnosis')
+    # fig.suptitle(x_name + ' Distribution by Diagnosis', fontsize=16)
+    plt.show()
+
 # Extract split values from each tree
 def extract_split_values(forest, feature_names):
     split_values = {name: [] for name in feature_names}

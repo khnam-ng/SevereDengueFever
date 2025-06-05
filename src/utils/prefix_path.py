@@ -1,4 +1,6 @@
 FULL_DATA_PATH = "/home/smivys/Sorbonne/108/m2_internship/DHF/data/Data_2017_2019_(1).csv"
+DATA_PATH_2025 = "/home/smivys/Sorbonne/108/m2_internship/DHF_2/data_2025.csv"
+DATA_PATH_SAMPLES = "/home/smivys/Sorbonne/108/m2_internship/DHF_2/data_samples.csv"
 REDUNDANT_COLS = ['ID BN ','STT','Full name','Age','Blood group','Ward','District','Hospitalization day','Discharge day','Patient No',\
                   'Storage No','Temperature','Characteristic fever ']
 REDUNDANT_ROWS = [143, 144, 145, 225, 226, 227, 250, 262] 

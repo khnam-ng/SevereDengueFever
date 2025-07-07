@@ -1,8 +1,10 @@
-DHF/
+dengue/models
 prefix.py
-models/
 108-env/
-DHF_2/
+108-env-py3.12/
+dengue/DHF
+images/
+nanopore/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

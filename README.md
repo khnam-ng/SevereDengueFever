@@ -1,1 +1,2 @@
-# M2 BIM - Sorbonne Université - Internship in summer 2025 - Nguyễn Khánh Nam
+# Predictive model for Severe Dengue Fever
+Data based on symptoms and blood test results in Vietnam
